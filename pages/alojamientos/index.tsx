@@ -9,11 +9,11 @@ import { createTheme, ThemeProvider } from "@mui/material/styles";
 import Typography from "@mui/material/Typography";
 import Image from "next/image";
 import * as React from "react";
-import AppBarCustom from "../src/component/AppBarCustom";
-import Copyright from "../src/component/Copyright";
-import Filter from "../src/component/Filter";
-import { ListMapas } from "../src/component/ListMapas";
-import { MapContextProvider, useMapContext } from "../src/context/MapContex";
+import AppBarCustom from "../../src/component/AppBarCustom";
+import Copyright from "../../src/component/Copyright";
+import Filter from "../../src/component/Filter";
+import { ListMapas } from "../../src/component/ListMapas";
+import { MapContextProvider, useMapContext } from "../../src/context/MapContex";
 
 export type FiltersHotels = {
   stars: number;
@@ -32,6 +32,7 @@ export type ContactHotels = {
 
 export type CardsHotels = {
   title: string;
+  id: string;
   description: string;
   image: React.ReactNode;
   tipe: string;
