@@ -54,10 +54,11 @@ const DetailHotel = (props: DetailHotelProps) => {
           </Grid>
         </CardContent>
         <CardActions>
+        <Link href={`/alojamientos/${item.id}`} target="_blank">
           <Button size="small" onClick={handleClose}>
-            Ver
+            Ver pagina
           </Button>
-
+</Link>
           <Link href={`https://wa.me/?text=`} target="_blank">
             <Button size="small">Compartir</Button>
           </Link>
