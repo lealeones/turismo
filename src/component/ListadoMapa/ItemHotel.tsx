@@ -11,7 +11,8 @@ import {
 } from "@mui/material";
 import Link from "next/link";
 import React from "react";
-import { CardsHotels } from "../../../pages/about";
+import { CardsHotels } from "../../../pages/alojamientos";
+//import { CardsHotels } from "../../../pages/alojamientos";
 import DetailHotel from "./DetailHotel";
 
 export type ItemHotelProps = {

@@ -7,7 +7,7 @@ import {
   Grid,
   Link,
   Popover,
-  Typography,
+  Typography
 } from "@mui/material";
 import { CardsHotels } from "../../../pages/alojamientos";
 
@@ -50,7 +50,7 @@ const DetailHotel = (props: DetailHotelProps) => {
           </Typography>
           <Typography>{item.description}</Typography>
           <Grid>
-          <iframe style={{border: "none", borderRadius:"4px"}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.8759507996256!2d-60.5386616842612!3d-31.719283418143267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b4528a925517a3%3A0xd48c4357adb13107!2sMaran%20Suites%20%26%20Towers!5e0!3m2!1ses!2sar!4v1661464431198!5m2!1ses!2sar" width="600" height="200"  loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+          <iframe style={{border: "none", borderRadius:"4px"}} src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3393.8759507996256!2d-60.5386616842612!3d-31.719283418143267!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x95b4528a925517a3%3A0xd48c4357adb13107!2sMaran%20Suites%20%26%20Towers!5e0!3m2!1ses!2sar!4v1661464431198!5m2!1ses!2sar" width="600" height="200"  loading="lazy" ></iframe>
           </Grid>
         </CardContent>
         <CardActions>

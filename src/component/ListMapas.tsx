@@ -1,6 +1,7 @@
 import { Container, Grid } from "@mui/material";
 import { data } from "../../data/hotel";
-import { CardsHotels } from "../../pages/about";
+import { CardsHotels } from "../../pages/alojamientos";
+//import { CardsHotels } from "../../pages/alojamientos";
 import { useMapContext } from "../context/MapContex";
 import filterItems from "./ListadoMapa/filterItems";
 import ItemHotel from "./ListadoMapa/ItemHotel";

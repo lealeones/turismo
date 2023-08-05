@@ -1,4 +1,5 @@
-import { CardsHotels } from "../../../pages/about";
+//import { CardsHotels } from "../../../pages/alojamientos";
+import { CardsHotels } from "../../../pages/alojamientos";
 import { filterMaps } from "../../context/MapContex";
 
 export type ItemsFilterProps = {
