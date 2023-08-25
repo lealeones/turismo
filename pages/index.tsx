@@ -1,3 +1,4 @@
+import { useQuery } from '@apollo/client';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Card from '@mui/material/Card';
@@ -11,8 +12,10 @@ import Link from '@mui/material/Link';
 import Stack from '@mui/material/Stack';
 import { createTheme, ThemeProvider } from '@mui/material/styles';
 import Typography from '@mui/material/Typography';
+import { getLocation } from '../location/query/getLocation';
 import AppBarCustom from '../src/component/AppBarCustom';
 import Copyright from '../src/component/Copyright';
+
 
 
 
@@ -54,6 +57,11 @@ const theme = createTheme({
 
 
 const Home = () => {
+const { data, loading, error } = useQuery(getLocation,{variables:{data:1}});
+if (loading) return <p>Loading...</p>;
+if (error) return <p>Error :(  {JSON.stringify(error)}  </p>;
+console.log("data",data)
+console.log("error",error)
 
   return (
     <ThemeProvider theme={theme}>
