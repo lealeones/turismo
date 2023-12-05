@@ -57,7 +57,7 @@ import { Trip } from "../../../graphql/graphql";
           <CardActions>
           <Link href={`/alojamientos/${item.id}`} target="_blank">
             <Button size="small" onClick={handleClose}>
-              Ver pagina
+              Comprar
             </Button>
   </Link>
             <Link href={`https://wa.me/?text=`} target="_blank">

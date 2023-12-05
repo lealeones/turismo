@@ -15,6 +15,7 @@ import Filter from "../../src/component/Filter";
 import { ListMapas } from "../../src/component/ListMapas";
 import { MapContextProvider, useMapContext } from "../../src/context/MapContex";
 import { ListTrips } from "../../src/component/ListTrips";
+import PaymentComponent from "../../src/component/paymentComponent";
 
 export type FiltersHotels = {
     stars: number;
@@ -56,7 +57,7 @@ export default function HomeBus() {
     const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
         null
     );
-
+    const [payment, setPayment] = React.useState<boolean>(false)
     //* Handlers
     const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
         setAnchorEl(event.currentTarget);
@@ -66,22 +67,20 @@ export default function HomeBus() {
         setAnchorEl(null);
     };
 
+    const handlePayment = () => {
+        setPayment(!payment)
+    }
+
     const open = Boolean(anchorEl);
 
     return (
         <ThemeProvider theme={theme}>
             <CssBaseline />
-
             <AppBarCustom />
-
             <MapContextProvider>
-
-
-                <Grid sx={{ height: "67vh", backgroundImage: "url(https://drive.google.com/uc?export=view&id=1ziNUERknMQRiuNuRBRfKFQ5ehMUtEz8G)" }}>
+                <Grid sx={{ height: "67vh", backgroundImage: "url(https://parana.tur.ar/writable/uploads/dfa6b25872db144f9e87c6b74721727c.png)", backgroundPosition: 'center', backgroundRepeat: "no-repeat", backgroundSize: 'cover' }}>
                     <div
-                        style={{
-                            backgroundImage: "url(https://drive.google.com/uc?export=view&id=1ziNUERknMQRiuNuRBRfKFQ5ehMUtEz8G)",
-                        }}
+
                     />
 
                     <Box
@@ -106,8 +105,11 @@ export default function HomeBus() {
                                 color="white"
                                 paragraph
                             >
-                                Hoteles en la ciudad de Parana
+                                Salidas para este fin de semana
                             </Typography>
+                            <Button variant="contained" onClick={handlePayment} >
+                                Pagar
+                            </Button>
                             <Stack
                                 sx={{ pt: 4 }}
                                 direction="row"
@@ -131,7 +133,7 @@ export default function HomeBus() {
 
 
             </MapContextProvider>
-
+            {payment && (<PaymentComponent open={payment} handleClose={handlePayment} />)}
             {/* Footer */}
             <Box sx={{ bgcolor: "background.paper", p: 6 }} component="footer">
                 <Typography variant="h6" align="center" gutterBottom>

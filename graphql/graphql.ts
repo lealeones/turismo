@@ -105,6 +105,17 @@ export type CreateRevisorInput = {
   userId: Scalars['Int']['input'];
 };
 
+export type CreateTicketInput = {
+  /** dni */
+  dni: Scalars['Int']['input'];
+  /** idTrip */
+  idTrip: Scalars['Int']['input'];
+  /** lasName */
+  lasName: Scalars['String']['input'];
+  /** name */
+  name: Scalars['String']['input'];
+};
+
 export type CreateTripInput = {
   /** dscr */
   dscr: Scalars['String']['input'];
@@ -189,6 +200,7 @@ export type Mutation = {
   createReview: Review;
   createReviewInstance: ReviewInstance;
   createRevisor: Revisor;
+  createTicket: Ticket;
   createTrip: Trip;
   createUser: User;
   createUserAlumno: Alumno;
@@ -201,6 +213,7 @@ export type Mutation = {
   removeReview: Review;
   removeReviewInstance: ReviewInstance;
   removeRevisor: Revisor;
+  removeTicket: Ticket;
   removeTrip: Trip;
   removeUser: User;
   updateAlumno: Alumno;
@@ -211,6 +224,7 @@ export type Mutation = {
   updateReview: Review;
   updateReviewInstance: ReviewInstance;
   updateRevisor: Revisor;
+  updateTicket: Ticket;
   updateTrip: Trip;
   updateUser: User;
 };
@@ -253,6 +267,11 @@ export type MutationCreateReviewInstanceArgs = {
 
 export type MutationCreateRevisorArgs = {
   createRevisorInput: CreateRevisorInput;
+};
+
+
+export type MutationCreateTicketArgs = {
+  createTicketInput: CreateTicketInput;
 };
 
 
@@ -316,6 +335,11 @@ export type MutationRemoveRevisorArgs = {
 };
 
 
+export type MutationRemoveTicketArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
 export type MutationRemoveTripArgs = {
   id: Scalars['Int']['input'];
 };
@@ -366,6 +390,11 @@ export type MutationUpdateRevisorArgs = {
 };
 
 
+export type MutationUpdateTicketArgs = {
+  updateTicketInput: UpdateTicketInput;
+};
+
+
 export type MutationUpdateTripArgs = {
   updateTripInput: UpdateTripInput;
 };
@@ -413,6 +442,8 @@ export type Query = {
   review: Review;
   reviewInstance: ReviewInstance;
   revisor: Revisor;
+  ticket: Ticket;
+  tickets: Array<Ticket>;
   trip: Trip;
   user: User;
   users: Array<User>;
@@ -460,6 +491,11 @@ export type QueryReviewInstanceArgs = {
 
 
 export type QueryRevisorArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type QueryTicketArgs = {
   id: Scalars['Int']['input'];
 };
 
@@ -528,6 +564,20 @@ export enum RolUser {
   Revisor = 'REVISOR',
   Secretaria = 'SECRETARIA'
 }
+
+export type Ticket = {
+  __typename?: 'Ticket';
+  /** dni */
+  dni: Scalars['Int']['output'];
+  /** id */
+  id: Scalars['Int']['output'];
+  /** idTrip */
+  idTrip: Scalars['Int']['output'];
+  /** lasName */
+  lasName: Scalars['String']['output'];
+  /** name */
+  name: Scalars['String']['output'];
+};
 
 export type Trip = {
   __typename?: 'Trip';
@@ -618,6 +668,18 @@ export type UpdateRevisorInput = {
   userId?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type UpdateTicketInput = {
+  /** dni */
+  dni?: InputMaybe<Scalars['Int']['input']>;
+  id: Scalars['Int']['input'];
+  /** idTrip */
+  idTrip?: InputMaybe<Scalars['Int']['input']>;
+  /** lasName */
+  lasName?: InputMaybe<Scalars['String']['input']>;
+  /** name */
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type UpdateTripInput = {
   /** dscr */
   dscr?: InputMaybe<Scalars['String']['input']>;
@@ -652,6 +714,13 @@ export type User = {
   username: Scalars['String']['output'];
 };
 
+export type CreatTicketMutationVariables = Exact<{
+  data: CreateTicketInput;
+}>;
+
+
+export type CreatTicketMutation = { __typename?: 'Mutation', createTicket: { __typename?: 'Ticket', id: number } };
+
 export type CreateLocationMutationVariables = Exact<{
   data: CreateLocationInput;
 }>;
@@ -672,6 +741,7 @@ export type GetLocationQueryVariables = Exact<{
 export type GetLocationQuery = { __typename?: 'Query', getLocation: { __typename?: 'Location', title: string, description: string, tipe: string } };
 
 
+export const CreatTicketDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"CreatTicket"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateTicketInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createTicket"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createTicketInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreatTicketMutation, CreatTicketMutationVariables>;
 export const CreateLocationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"mutation","name":{"kind":"Name","value":"createLocation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"CreateLocationInput"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"createLocation"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"createLocationInput"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}}]}}]}}]} as unknown as DocumentNode<CreateLocationMutation, CreateLocationMutationVariables>;
 export const FindTripsDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"findTrips"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"findTrips"},"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"id"}},{"kind":"Field","name":{"kind":"Name","value":"startTime"}},{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"dscr"}}]}}]}}]} as unknown as DocumentNode<FindTripsQuery, FindTripsQueryVariables>;
 export const GetLocationDocument = {"kind":"Document","definitions":[{"kind":"OperationDefinition","operation":"query","name":{"kind":"Name","value":"getLocation"},"variableDefinitions":[{"kind":"VariableDefinition","variable":{"kind":"Variable","name":{"kind":"Name","value":"data"}},"type":{"kind":"NonNullType","type":{"kind":"NamedType","name":{"kind":"Name","value":"Int"}}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"getLocation"},"arguments":[{"kind":"Argument","name":{"kind":"Name","value":"id"},"value":{"kind":"Variable","name":{"kind":"Name","value":"data"}}}],"selectionSet":{"kind":"SelectionSet","selections":[{"kind":"Field","name":{"kind":"Name","value":"title"}},{"kind":"Field","name":{"kind":"Name","value":"description"}},{"kind":"Field","name":{"kind":"Name","value":"tipe"}}]}}]}}]} as unknown as DocumentNode<GetLocationQuery, GetLocationQueryVariables>;
@@ -773,6 +843,17 @@ export type CreateRevisorInput = {
   userId: Scalars['Int']['input'];
 };
 
+export type CreateTicketInput = {
+  /** dni */
+  dni: Scalars['Int']['input'];
+  /** idTrip */
+  idTrip: Scalars['Int']['input'];
+  /** lasName */
+  lasName: Scalars['String']['input'];
+  /** name */
+  name: Scalars['String']['input'];
+};
+
 export type CreateTripInput = {
   /** dscr */
   dscr: Scalars['String']['input'];
@@ -857,6 +938,7 @@ export type Mutation = {
   createReview: Review;
   createReviewInstance: ReviewInstance;
   createRevisor: Revisor;
+  createTicket: Ticket;
   createTrip: Trip;
   createUser: User;
   createUserAlumno: Alumno;
@@ -869,6 +951,7 @@ export type Mutation = {
   removeReview: Review;
   removeReviewInstance: ReviewInstance;
   removeRevisor: Revisor;
+  removeTicket: Ticket;
   removeTrip: Trip;
   removeUser: User;
   updateAlumno: Alumno;
@@ -879,6 +962,7 @@ export type Mutation = {
   updateReview: Review;
   updateReviewInstance: ReviewInstance;
   updateRevisor: Revisor;
+  updateTicket: Ticket;
   updateTrip: Trip;
   updateUser: User;
 };
@@ -921,6 +1005,11 @@ export type MutationCreateReviewInstanceArgs = {
 
 export type MutationCreateRevisorArgs = {
   createRevisorInput: CreateRevisorInput;
+};
+
+
+export type MutationCreateTicketArgs = {
+  createTicketInput: CreateTicketInput;
 };
 
 
@@ -984,6 +1073,11 @@ export type MutationRemoveRevisorArgs = {
 };
 
 
+export type MutationRemoveTicketArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
 export type MutationRemoveTripArgs = {
   id: Scalars['Int']['input'];
 };
@@ -1034,6 +1128,11 @@ export type MutationUpdateRevisorArgs = {
 };
 
 
+export type MutationUpdateTicketArgs = {
+  updateTicketInput: UpdateTicketInput;
+};
+
+
 export type MutationUpdateTripArgs = {
   updateTripInput: UpdateTripInput;
 };
@@ -1081,6 +1180,8 @@ export type Query = {
   review: Review;
   reviewInstance: ReviewInstance;
   revisor: Revisor;
+  ticket: Ticket;
+  tickets: Array<Ticket>;
   trip: Trip;
   user: User;
   users: Array<User>;
@@ -1128,6 +1229,11 @@ export type QueryReviewInstanceArgs = {
 
 
 export type QueryRevisorArgs = {
+  id: Scalars['Int']['input'];
+};
+
+
+export type QueryTicketArgs = {
   id: Scalars['Int']['input'];
 };
 
@@ -1196,6 +1302,20 @@ export enum RolUser {
   Revisor = 'REVISOR',
   Secretaria = 'SECRETARIA'
 }
+
+export type Ticket = {
+  __typename?: 'Ticket';
+  /** dni */
+  dni: Scalars['Int']['output'];
+  /** id */
+  id: Scalars['Int']['output'];
+  /** idTrip */
+  idTrip: Scalars['Int']['output'];
+  /** lasName */
+  lasName: Scalars['String']['output'];
+  /** name */
+  name: Scalars['String']['output'];
+};
 
 export type Trip = {
   __typename?: 'Trip';
@@ -1286,6 +1406,18 @@ export type UpdateRevisorInput = {
   userId?: InputMaybe<Scalars['Int']['input']>;
 };
 
+export type UpdateTicketInput = {
+  /** dni */
+  dni?: InputMaybe<Scalars['Int']['input']>;
+  id: Scalars['Int']['input'];
+  /** idTrip */
+  idTrip?: InputMaybe<Scalars['Int']['input']>;
+  /** lasName */
+  lasName?: InputMaybe<Scalars['String']['input']>;
+  /** name */
+  name?: InputMaybe<Scalars['String']['input']>;
+};
+
 export type UpdateTripInput = {
   /** dscr */
   dscr?: InputMaybe<Scalars['String']['input']>;
@@ -1319,6 +1451,13 @@ export type User = {
   updatedAt: Scalars['DateTime']['output'];
   username: Scalars['String']['output'];
 };
+
+export type CreatTicketMutationVariables = Exact<{
+  data: CreateTicketInput;
+}>;
+
+
+export type CreatTicketMutation = { __typename?: 'Mutation', createTicket: { __typename?: 'Ticket', id: number } };
 
 export type CreateLocationMutationVariables = Exact<{
   data: CreateLocationInput;

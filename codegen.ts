@@ -3,7 +3,7 @@ import type { CodegenConfig } from '@graphql-codegen/cli';
 
 const config: CodegenConfig = {
   overwrite: true,
-  schema: "http://192.168.0.122:3000/graphql",
+  schema: "http://192.168.0.120:3000/graphql",
   documents: "./location/**/*",
   generates: {
     "./graphql/": {

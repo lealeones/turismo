@@ -15,6 +15,8 @@ import Typography from '@mui/material/Typography';
 import { getLocation } from '../location/query/getLocation';
 import AppBarCustom from '../src/component/AppBarCustom';
 import Copyright from '../src/component/Copyright';
+import SendIcon from '@mui/icons-material/Send';
+import axios from 'axios';
 
 
 
@@ -57,11 +59,26 @@ const theme = createTheme({
 
 
 const Home = () => {
-const { data, loading, error } = useQuery(getLocation,{variables:{data:1}});
-if (loading) return <p>Loading...</p>;
-if (error) return <p>Error :(  {JSON.stringify(error)}  </p>;
-console.log("data",data)
-console.log("error",error)
+  const { data, loading, error } = useQuery(getLocation, { variables: { data: 1 } });
+  if (loading) return <p>Loading...</p>;
+  if (error) return <p>Error :(  {JSON.stringify(error)}  </p>;
+
+
+
+  const handlePay = async () => {
+    const urlBackend = `${process.env.NEXT_PUBLIC_BACKEND_APP}/payment/new`
+    const postData = {
+      name: "Nombre del producto",
+      price: 19.99,
+      unit: 1,
+      img: "url_de_la_imagen.jpg"
+    };
+    const response = await axios.post(urlBackend, postData)
+    if (response.data?.url) {
+      window.open(response.data.url, "_blank")
+    }
+    console.log("boton apretado", response)
+  }
 
   return (
     <ThemeProvider theme={theme}>
@@ -92,6 +109,27 @@ console.log("error",error)
             <Link href={urlWeb} variant="h4" underline="none" sx={{ justifyContent: "center", display: "flex", }} >
               www.parana.tur.ar
             </Link>
+
+            <Grid container item xs={12} sx={{
+              pt: 20, pb: 50
+            }}>
+              {/* asdasdasd */}
+
+              <Grid item xs={6} >
+
+                <Button variant="contained" endIcon={<SendIcon />} onClick={handlePay} >
+                  Pagar
+                </Button>
+
+              </Grid>
+              <Grid item xs={6}>
+                <Typography variant="h5" align="center" color="text.secondary" >
+                  -     Boton para pagar
+                </Typography>
+
+              </Grid>
+
+            </Grid>
 
 
             <Stack

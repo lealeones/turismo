@@ -18,7 +18,9 @@
     "@emotion/styled": "latest",
     "@mui/icons-material": "latest",
     "@mui/material": "latest",
+    "axios": "^1.6.2",
     "graphql": "^16.7.1",
+    "mercadopago": "^2.0.4",
     "next": "12.2.5",
     "next-share": "^0.18.0",
     "react": "latest",
@@ -26,14 +28,14 @@
   },
   "devDependencies": {
     "@graphql-codegen/cli": "5.0.0",
+    "@graphql-codegen/client-preset": "4.1.0",
+    "@graphql-codegen/introspection": "4.0.0",
     "@graphql-codegen/typescript": "^4.0.1",
     "@graphql-codegen/typescript-resolvers": "^4.0.1",
     "@types/node": "latest",
     "@types/react": "latest",
     "eslint": "^8.22.0",
     "eslint-config-next": "latest",
-    "typescript": "latest",
-    "@graphql-codegen/introspection": "4.0.0",
-    "@graphql-codegen/client-preset": "4.1.0"
+    "typescript": "latest"
   }
 }
